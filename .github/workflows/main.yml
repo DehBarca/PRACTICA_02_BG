@@ -1,0 +1,34 @@
+name: Notify to Email on Push
+
+on:
+  push:
+    branches:
+      - '**'  # Triggers on push to any branch
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Send Email Notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "🚀 New Push to ${{ github.repository }}"
+          to: recipient@example.com
+          from: ${{ secrets.MAIL_USERNAME }}
+          body: |
+            A new push was made to the repository.
+
+            📦 Repository: ${{ github.repository }}
+            🌿 Branch:     ${{ github.ref_name }}
+            👤 Author:     ${{ github.actor }}
+            💬 Commit Msg: ${{ github.event.head_commit.message }}
+            🔗 Commit URL: ${{ github.event.head_commit.url }}
