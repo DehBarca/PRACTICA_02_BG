@@ -22,7 +22,7 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: "🚀 New Push to ${{ github.repository }}"
-          to: recipient@example.com
+          to: dialebar@gmail.com
           from: ${{ secrets.MAIL_USERNAME }}
           body: |
             A new push was made to the repository.
