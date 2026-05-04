@@ -21,8 +21,8 @@ jobs:
           secure: true
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "🚀 New Push to ${{ github.repository }}"
-          to: dialebar@gmail.com
+          subject: "Cambios subidos a rama ${{ github.ref_name }}"
+          to: juanpa33wc@gmail.com
           from: ${{ secrets.MAIL_USERNAME }}
           body: |
             A new push was made to the repository.
